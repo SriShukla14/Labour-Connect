@@ -5,34 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/common.css" />
     <link rel="stylesheet" href="../styles/index.css" />
+
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     />
     <title>Labour Connect</title>
   </head>
-  <body>
+  <body id="body" data-theme="light" onload="loadPage()">
+    <div id="preloader-window">
+      <div class="loader"></div>
+    </div>
     <header>
       <h2>Labour Connect</h2>
       <div class="right-menu-items">
         <div class="small-menu">
-            <p class="active">Home</p>
-        <p onclick="window.location.href = '/about'">About Us</p>
-        <p onclick="window.location.href = '/contact'">Contact Us</p>
-        <p onclick="window.location.href = '/support'">Support Us!</p>
+          <p class="active">Home</p>
+          <p onclick="window.location.href = '/about';">About Us</p>
+          <p onclick="window.location.href = '/contact'">Contact Us</p>
+          <p onclick="window.location.href = '/support'">Support Us!</p>
         </div>
-        <div class="top-menu-icons">
+        <div class="top-menu-icons" aria-label="Language" onclick="openLanguageSelector()">
           <span class="material-symbols-outlined"> language </span>
         </div>
-        <div class="top-menu-icons">
+        <div
+          class="top-menu-icons"
+          aria-label="Toggle Dark Mode"
+          onclick="toggleDarkMode()"
+          id="dark-mode-toggle-button"
+        >
           <span class="material-symbols-outlined"> dark_mode </span>
         </div>
-        <div class="top-menu-icons menu-btn">
+        <div class="top-menu-icons menu-btn" aria-label="Menu">
           <span class="material-symbols-outlined"> menu </span>
         </div>
       </div>
     </header>
+    <div id="language-selector">
+      <h3>Select a language</h3>
+      <div class="language-option-container">
+        <div class="language-option active" onclick="setLanguage('en')">
+          <!-- English -->
+          <span class="language-option-icon">EN</span>
+          <p class="language-option-text">English</p>
+        </div>
+        <div class="language-option" onclick="setLanguage('hi')">
+          <!-- Hindi -->
+          <span class="language-option-icon">हि</span>
+          <p class="language-option-text">हिन्दी</p>
+        </div>
+        <div class="language-option" onclick="setLanguage('bn')">
+          <!-- Bengali -->
+          <span class="language-option-icon">বা</span>
+          <p class="language-option-text">বাংলা</p>
+        </div>
+        <div class="language-option" onclick="setLanguage('te')">
+          <!-- Telugu -->
+          <span class="language-option-icon">తె</span>
+          <p class="language-option-text">తెలుగు</p>
+        </div>
+        <div class="language-option" onclick="setLanguage('ta')">
+          <!-- Tamil -->
+          <span class="language-option-icon">தமி</span>
+          <p class="language-option-text">தமிழ்</p>
+        </div>
+        <div class="language-option" onclick="setLanguage('ur')">
+          <!-- Urdu -->
+          <span class="language-option-icon">ار</span>
+          <p class="language-option-text">اردو</p>
+        </div>
+        <div class="language-option" onclick="setLanguage('gu')">
+          <!-- Gujarati -->
+          <span class="language-option-icon">ગુ</span>
+          <p class="language-option-text">ગુજરાતી</p>
+        </div>
+        <div class="language-option" onclick="setLanguage('kn')">
+          <!-- Kannada -->
+          <span class="language-option-icon">ಕಂ</span>
+          <p class="language-option-text">ಕನ್ನಡ</p>
+        </div>
+        <div class="language-option" onclick="setLanguage('pa')">
+          <!-- Punjabi -->
+          <span class="language-option-icon">ਪੰ</span>
+          <p class="language-option-text">ਪੰਜਾਬੀ</p>
+        </div>
+        <div class="language-option" onclick="setLanguage('mr')">
+          <!-- Marathi -->
+          <span class="language-option-icon">म</span>
+          <p class="language-option-text">मराठी</p>
+        </div>
+      </div>
+      <button onclick="closeLanguageSelector()" class="close-btn"><span class="material-symbols-outlined">
+close
+</span></button>
+    </div>
     <script src="../js/common.js"></script>
-
   </body>
 </html>
