@@ -1,0 +1,14 @@
+h3{
+    font-size: 48px;
+    text-align: center;
+    width: 100%;
+}
+p{
+    font-size: 18px;
+    color: #333;
+    padding: 10px;
+    text-align: justify;
+}
+p[data-theme="dark"]{
+    color: #ccc;
+}

@@ -22,10 +22,13 @@
         <div class="small-menu">
           <p class="active">Home</p>
           <p onclick="window.location.href = '/about';">About Us</p>
-          <p onclick="window.location.href = '/contact'">Contact Us</p>
           <p onclick="window.location.href = '/support'">Support Us!</p>
         </div>
-        <div class="top-menu-icons" aria-label="Language" onclick="openLanguageSelector()">
+        <div
+          class="top-menu-icons"
+          aria-label="Language"
+          onclick="openLanguageSelector()"
+        >
           <span class="material-symbols-outlined"> language </span>
         </div>
         <div
@@ -95,10 +98,629 @@
           <p class="language-option-text">मराठी</p>
         </div>
       </div>
-      <button onclick="closeLanguageSelector()" class="close-btn"><span class="material-symbols-outlined">
-close
-</span></button>
+      <button onclick="closeLanguageSelector()" class="close-btn">
+        <span class="material-symbols-outlined"> close </span>
+      </button>
     </div>
+    <main>
+      <section class="hero-section">
+        <h1>Find Skilled Labours Near You</h1>
+        <h5>Connect with verified local workers for all your service needs</h5>
+        <div class="search-bar">
+          <span class="material-symbols-outlined"> search </span>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search for services..."
+          />
+          <button id="search-button" onclick="performSearch()">Search</button>
+        </div>
+      </section>
+      <section class="search-results">
+        <div class="filter-area">
+          <div class="filter-heading">
+            <span class="material-symbols-outlined"> filter_list </span>
+            <h3>Filter</h3>
+          </div>
+
+          <div class="filter-item">
+            <h4>Category</h4>
+            <select title="Category Filter" id="category-filter">
+              <option value="">All Categories</option>
+              <option value="plumber">Plumber</option>
+              <option value="electrician">Electrician</option>
+              <option value="carpenter">Carpenter</option>
+              <option value="cleaner">Cleaner</option>
+              <option value="painter">Painter</option>
+              <option value="mechanic">Mechanic</option>
+              <option value="gardener">Gardener</option>
+              <option value="mason">Mason</option>
+            </select>
+          </div>
+          <div class="filter-item">
+            <h4>Skill level</h4>
+            <select title="Skill Level Filter" id="skill-level-filter">
+              <option value="">All Levels</option>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="expert">Expert</option>
+            </select>
+          </div>
+          <div class="filter-item">
+            <h4>Rating</h4>
+            <div class="star-rating">
+              <span
+                class="material-symbols-outlined"
+                onclick="showStarRating(this)"
+              >
+                star_rate
+              </span>
+              <span
+                class="material-symbols-outlined"
+                onclick="showStarRating(this)"
+              >
+                star_rate
+              </span>
+              <span
+                class="material-symbols-outlined"
+                onclick="showStarRating(this)"
+              >
+                star_rate
+              </span>
+              <span
+                class="material-symbols-outlined"
+                onclick="showStarRating(this)"
+              >
+                star_rate
+              </span>
+              <span
+                class="material-symbols-outlined"
+                onclick="showStarRating(this)"
+              >
+                star_rate
+              </span>
+            </div>
+          </div>
+
+          <div class="filter-item">
+            <h4>Distance</h4>
+            <input
+              title="Distance Filter"
+              type="range"
+              name="distance-filter"
+              id="distance-filter"
+              min="1"
+              max="10"
+              step="1"
+              value="5"
+              oninput="updateDistanceValue(this.value)"
+            />
+            <span id="distance-value">10 km</span>
+          </div>
+          <button id="apply-filters-button" onclick="applyFilters()">
+            Apply Filters
+          </button>
+        </div>
+        <div class="real-search-results">
+          <h3 id="results-heading">Search Results</h3>
+          <p>Showing 10 of 300,000 results</p>
+          <div id="results-container">
+            <!-- Search results will be dynamically inserted here -->
+            <div class="result-card">
+              <h4>Rajesh Koorthapali</h4>
+              <p class="status">Available</p>
+              <div class="location">
+                <span class="material-symbols-outlined"> location_on </span>
+                <p>New Delhi, India</p>
+              </div>
+              <h6>Skills</h6>
+              <div class="skill-container">
+                <p class="skill">Mason - Expert</p>
+              </div>
+              <div class="distance">
+                <span class="material-symbols-outlined"> near_me </span>
+                <p>1.4 km away</p>
+              </div>
+              <div class="action-btns" style="flex: 1">
+                <button>
+                  <span
+                    class="material-symbols-outlined"
+                    style="margin-right: 10px"
+                  >
+                    call
+                  </span>
+                  Call
+                </button>
+                <button>
+                  <span class="material-symbols-outlined"> content_copy </span>
+                </button>
+              </div>
+            </div>
+            <div class="result-card">
+              <h4>Rajesh Koorthapali</h4>
+              <p class="status">Available</p>
+              <div class="location">
+                <span class="material-symbols-outlined"> location_on </span>
+                <p>New Delhi, India</p>
+              </div>
+              <h6>Skills</h6>
+              <div class="skill-container">
+                <p class="skill">Mason - Expert</p>
+              </div>
+              <div class="distance">
+                <span class="material-symbols-outlined"> near_me </span>
+                <p>1.4 km away</p>
+              </div>
+              <div class="action-btns" style="flex: 1">
+                <button>
+                  <span
+                    class="material-symbols-outlined"
+                    style="margin-right: 10px"
+                  >
+                    call
+                  </span>
+                  Call
+                </button>
+                <button>
+                  <span class="material-symbols-outlined"> content_copy </span>
+                </button>
+              </div>
+            </div>
+            <div class="result-card">
+              <h4>Rajesh Koorthapali</h4>
+              <p class="status">Available</p>
+              <div class="location">
+                <span class="material-symbols-outlined"> location_on </span>
+                <p>New Delhi, India</p>
+              </div>
+              <h6>Skills</h6>
+              <div class="skill-container">
+                <p class="skill">Mason - Expert</p>
+              </div>
+              <div class="distance">
+                <span class="material-symbols-outlined"> near_me </span>
+                <p>1.4 km away</p>
+              </div>
+              <div class="action-btns" style="flex: 1">
+                <button>
+                  <span
+                    class="material-symbols-outlined"
+                    style="margin-right: 10px"
+                  >
+                    call
+                  </span>
+                  Call
+                </button>
+                <button>
+                  <span class="material-symbols-outlined"> content_copy </span>
+                </button>
+              </div>
+            </div>
+            <div class="result-card">
+              <h4>Rajesh Koorthapali</h4>
+              <p class="status">Available</p>
+              <div class="location">
+                <span class="material-symbols-outlined"> location_on </span>
+                <p>New Delhi, India</p>
+              </div>
+              <h6>Skills</h6>
+              <div class="skill-container">
+                <p class="skill">Mason - Expert</p>
+              </div>
+              <div class="distance">
+                <span class="material-symbols-outlined"> near_me </span>
+                <p>1.4 km away</p>
+              </div>
+              <div class="action-btns" style="flex: 1">
+                <button>
+                  <span
+                    class="material-symbols-outlined"
+                    style="margin-right: 10px"
+                  >
+                    call
+                  </span>
+                  Call
+                </button>
+                <button>
+                  <span class="material-symbols-outlined"> content_copy </span>
+                </button>
+              </div>
+            </div>
+            <div class="result-card">
+              <h4>Rajesh Koorthapali</h4>
+              <p class="status">Available</p>
+              <div class="location">
+                <span class="material-symbols-outlined"> location_on </span>
+                <p>New Delhi, India</p>
+              </div>
+              <h6>Skills</h6>
+              <div class="skill-container">
+                <p class="skill">Mason - Expert</p>
+              </div>
+              <div class="distance">
+                <span class="material-symbols-outlined"> near_me </span>
+                <p>1.4 km away</p>
+              </div>
+              <div class="action-btns" style="flex: 1">
+                <button>
+                  <span
+                    class="material-symbols-outlined"
+                    style="margin-right: 10px"
+                  >
+                    call
+                  </span>
+                  Call
+                </button>
+                <button>
+                  <span class="material-symbols-outlined"> content_copy </span>
+                </button>
+              </div>
+            </div>
+            <div class="result-card">
+              <h4>Rajesh Koorthapali</h4>
+              <p class="status">Available</p>
+              <div class="location">
+                <span class="material-symbols-outlined"> location_on </span>
+                <p>New Delhi, India</p>
+              </div>
+              <h6>Skills</h6>
+              <div class="skill-container">
+                <p class="skill">Mason - Expert</p>
+              </div>
+              <div class="distance">
+                <span class="material-symbols-outlined"> near_me </span>
+                <p>1.4 km away</p>
+              </div>
+              <div class="action-btns" style="flex: 1">
+                <button>
+                  <span
+                    class="material-symbols-outlined"
+                    style="margin-right: 10px"
+                  >
+                    call
+                  </span>
+                  Call
+                </button>
+                <button>
+                  <span class="material-symbols-outlined"> content_copy </span>
+                </button>
+              </div>
+            </div>
+            <div class="result-card">
+              <h4>Rajesh Koorthapali</h4>
+              <p class="status">Available</p>
+              <div class="location">
+                <span class="material-symbols-outlined"> location_on </span>
+                <p>New Delhi, India</p>
+              </div>
+              <h6>Skills</h6>
+              <div class="skill-container">
+                <p class="skill">Mason - Expert</p>
+              </div>
+              <div class="distance">
+                <span class="material-symbols-outlined"> near_me </span>
+                <p>1.4 km away</p>
+              </div>
+              <div class="action-btns" style="flex: 1">
+                <button>
+                  <span
+                    class="material-symbols-outlined"
+                    style="margin-right: 10px"
+                  >
+                    call
+                  </span>
+                  Call
+                </button>
+                <button>
+                  <span class="material-symbols-outlined"> content_copy </span>
+                </button>
+              </div>
+            </div>
+            <div class="result-card">
+              <h4>Rajesh Koorthapali</h4>
+              <p class="status">Available</p>
+              <div class="location">
+                <span class="material-symbols-outlined"> location_on </span>
+                <p>New Delhi, India</p>
+              </div>
+              <h6>Skills</h6>
+              <div class="skill-container">
+                <p class="skill">Mason - Expert</p>
+              </div>
+              <div class="distance">
+                <span class="material-symbols-outlined"> near_me </span>
+                <p>1.4 km away</p>
+              </div>
+              <div class="action-btns" style="flex: 1">
+                <button>
+                  <span
+                    class="material-symbols-outlined"
+                    style="margin-right: 10px"
+                  >
+                    call
+                  </span>
+                  Call
+                </button>
+                <button>
+                  <span class="material-symbols-outlined"> content_copy </span>
+                </button>
+              </div>
+            </div>
+            <div class="result-card">
+              <h4>Rajesh Koorthapali</h4>
+              <p class="status">Available</p>
+              <div class="location">
+                <span class="material-symbols-outlined"> location_on </span>
+                <p>New Delhi, India</p>
+              </div>
+              <h6>Skills</h6>
+              <div class="skill-container">
+                <p class="skill">Mason - Expert</p>
+              </div>
+              <div class="distance">
+                <span class="material-symbols-outlined"> near_me </span>
+                <p>1.4 km away</p>
+              </div>
+              <div class="action-btns" style="flex: 1">
+                <button>
+                  <span
+                    class="material-symbols-outlined"
+                    style="margin-right: 10px"
+                  >
+                    call
+                  </span>
+                  Call
+                </button>
+                <button>
+                  <span class="material-symbols-outlined"> content_copy </span>
+                </button>
+              </div>
+            </div>
+            <div class="result-card">
+              <h4>Rajesh Koorthapali</h4>
+              <p class="status">Available</p>
+              <div class="location">
+                <span class="material-symbols-outlined"> location_on </span>
+                <p>New Delhi, India</p>
+              </div>
+              <h6>Skills</h6>
+              <div class="skill-container">
+                <p class="skill">Mason - Expert</p>
+              </div>
+              <div class="distance">
+                <span class="material-symbols-outlined"> near_me </span>
+                <p>1.4 km away</p>
+              </div>
+              <div class="action-btns" style="flex: 1">
+                <button>
+                  <span
+                    class="material-symbols-outlined"
+                    style="margin-right: 10px"
+                  >
+                    call
+                  </span>
+                  Call
+                </button>
+                <button>
+                  <span class="material-symbols-outlined"> content_copy </span>
+                </button>
+              </div>
+            </div>
+            <div class="result-card">
+              <h4>Rajesh Koorthapali</h4>
+              <p class="status">Available</p>
+              <div class="location">
+                <span class="material-symbols-outlined"> location_on </span>
+                <p>New Delhi, India</p>
+              </div>
+              <h6>Skills</h6>
+              <div class="skill-container">
+                <p class="skill">Mason - Expert</p>
+              </div>
+              <div class="distance">
+                <span class="material-symbols-outlined"> near_me </span>
+                <p>1.4 km away</p>
+              </div>
+              <div class="action-btns" style="flex: 1">
+                <button>
+                  <span
+                    class="material-symbols-outlined"
+                    style="margin-right: 10px"
+                  >
+                    call
+                  </span>
+                  Call
+                </button>
+                <button>
+                  <span class="material-symbols-outlined"> content_copy </span>
+                </button>
+              </div>
+            </div>
+            <div class="result-card">
+              <h4>Rajesh Koorthapali</h4>
+              <p class="status">Available</p>
+              <div class="location">
+                <span class="material-symbols-outlined"> location_on </span>
+                <p>New Delhi, India</p>
+              </div>
+              <h6>Skills</h6>
+              <div class="skill-container">
+                <p class="skill">Mason - Expert</p>
+              </div>
+              <div class="distance">
+                <span class="material-symbols-outlined"> near_me </span>
+                <p>1.4 km away</p>
+              </div>
+              <div class="action-btns" style="flex: 1">
+                <button>
+                  <span
+                    class="material-symbols-outlined"
+                    style="margin-right: 10px"
+                  >
+                    call
+                  </span>
+                  Call
+                </button>
+                <button>
+                  <span class="material-symbols-outlined"> content_copy </span>
+                </button>
+              </div>
+            </div>
+            <div class="result-card">
+              <h4>Rajesh Koorthapali</h4>
+              <p class="status">Available</p>
+              <div class="location">
+                <span class="material-symbols-outlined"> location_on </span>
+                <p>New Delhi, India</p>
+              </div>
+              <h6>Skills</h6>
+              <div class="skill-container">
+                <p class="skill">Mason - Expert</p>
+              </div>
+              <div class="distance">
+                <span class="material-symbols-outlined"> near_me </span>
+                <p>1.4 km away</p>
+              </div>
+              <div class="action-btns" style="flex: 1">
+                <button>
+                  <span
+                    class="material-symbols-outlined"
+                    style="margin-right: 10px"
+                  >
+                    call
+                  </span>
+                  Call
+                </button>
+                <button>
+                  <span class="material-symbols-outlined"> content_copy </span>
+                </button>
+              </div>
+            </div>
+            <div class="result-card">
+              <h4>Rajesh Koorthapali</h4>
+              <p class="status">Available</p>
+              <div class="location">
+                <span class="material-symbols-outlined"> location_on </span>
+                <p>New Delhi, India</p>
+              </div>
+              <h6>Skills</h6>
+              <div class="skill-container">
+                <p class="skill">Mason - Expert</p>
+              </div>
+              <div class="distance">
+                <span class="material-symbols-outlined"> near_me </span>
+                <p>1.4 km away</p>
+              </div>
+              <div class="action-btns" style="flex: 1">
+                <button>
+                  <span
+                    class="material-symbols-outlined"
+                    style="margin-right: 10px"
+                  >
+                    call
+                  </span>
+                  Call
+                </button>
+                <button>
+                  <span class="material-symbols-outlined"> content_copy </span>
+                </button>
+              </div>
+            </div>
+            <div class="result-card">
+              <h4>Rajesh Koorthapali</h4>
+              <p class="status">Available</p>
+              <div class="location">
+                <span class="material-symbols-outlined"> location_on </span>
+                <p>New Delhi, India</p>
+              </div>
+              <h6>Skills</h6>
+              <div class="skill-container">
+                <p class="skill">Mason - Expert</p>
+              </div>
+              <div class="distance">
+                <span class="material-symbols-outlined"> near_me </span>
+                <p>1.4 km away</p>
+              </div>
+              <div class="action-btns" style="flex: 1">
+                <button>
+                  <span
+                    class="material-symbols-outlined"
+                    style="margin-right: 10px"
+                  >
+                    call
+                  </span>
+                  Call
+                </button>
+                <button>
+                  <span class="material-symbols-outlined"> content_copy </span>
+                </button>
+              </div>
+            </div>
+            <div class="result-card">
+              <h4>Rajesh Koorthapali</h4>
+              <p class="status">Available</p>
+              <div class="location">
+                <span class="material-symbols-outlined"> location_on </span>
+                <p>New Delhi, India</p>
+              </div>
+              <h6>Skills</h6>
+              <div class="skill-container">
+                <p class="skill">Mason - Expert</p>
+              </div>
+              <div class="distance">
+                <span class="material-symbols-outlined"> near_me </span>
+                <p>1.4 km away</p>
+              </div>
+              <div class="action-btns" style="flex: 1">
+                <button>
+                  <span
+                    class="material-symbols-outlined"
+                    style="margin-right: 10px"
+                  >
+                    call
+                  </span>
+                  Call
+                </button>
+                <button>
+                  <span class="material-symbols-outlined"> content_copy </span>
+                </button>
+              </div>
+            </div>
+            <div class="result-card">
+              <h4>Rajesh Koorthapali</h4>
+              <p class="status">Available</p>
+              <div class="location">
+                <span class="material-symbols-outlined"> location_on </span>
+                <p>New Delhi, India</p>
+              </div>
+              <h6>Skills</h6>
+              <div class="skill-container">
+                <p class="skill">Mason - Expert</p>
+              </div>
+              <div class="distance">
+                <span class="material-symbols-outlined"> near_me </span>
+                <p>1.4 km away</p>
+              </div>
+              <div class="action-btns" style="flex: 1">
+                <button>
+                  <span
+                    class="material-symbols-outlined"
+                    style="margin-right: 10px"
+                  >
+                    call
+                  </span>
+                  Call
+                </button>
+                <button>
+                  <span class="material-symbols-outlined"> content_copy </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
     <script src="../js/common.js"></script>
+    <script src="../js/index.js"></script>
   </body>
 </html>
