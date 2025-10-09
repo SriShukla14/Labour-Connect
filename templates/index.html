@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/common.css" />
+    <link rel="stylesheet" href="../styles/index.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <title>Labour Connect</title>
+  </head>
+  <body id="body" data-theme="light" onload="loadPage()">
+    <div id="preloader-window">
+      <div class="loader"></div>
+    </div>
+    <header>
+      <h2 onclick="window.location.href='/'">Labour Connect</h2>
+      <div class="right-menu-items">
+        <div class="small-menu">
+          <p class="active">Home</p>
+          <p onclick="window.location.href = '/about';">Special Thanks</p>
+          <p onclick="window.location.href = '/support'">Support Us!</p>
+        </div>
+        <div
+          class="top-menu-icons"
+          aria-label="Language"
+          onclick="openLanguageSelector()"
+        >
+          <span class="material-symbols-outlined"> language </span>
+        </div>
+        <div
+          class="top-menu-icons"
+          aria-label="Toggle Dark Mode"
+          onclick="toggleDarkMode()"
+          id="dark-mode-toggle-button"
+        >
+          <span class="material-symbols-outlined"> dark_mode </span>
+        </div>
+        <div class="top-menu-icons menu-btn" aria-label="Menu">
+          <span class="material-symbols-outlined"> menu </span>
+        </div>
+      </div>
+    </header>
+    <div id="language-selector">
+      <h3>Select a language</h3>
+      <div class="language-option-container">
+        <div class="language-option active" onclick="setLanguage('en')">
+          <!-- English -->
+          <span class="language-option-icon">EN</span>
+          <p class="language-option-text">English</p>
+        </div>
+        <div class="language-option" onclick="setLanguage('hi')">
+          <!-- Hindi -->
+          <span class="language-option-icon">हि</span>
+          <p class="language-option-text">हिन्दी</p>
+        </div>
+        <div class="language-option" onclick="setLanguage('bn')">
+          <!-- Bengali -->
+          <span class="language-option-icon">বা</span>
+          <p class="language-option-text">বাংলা</p>
+        </div>
+        <div class="language-option" onclick="setLanguage('te')">
+          <!-- Telugu -->
+          <span class="language-option-icon">తె</span>
+          <p class="language-option-text">తెలుగు</p>
+        </div>
+        <div class="language-option" onclick="setLanguage('ta')">
+          <!-- Tamil -->
+          <span class="language-option-icon">தமி</span>
+          <p class="language-option-text">தமிழ்</p>
+        </div>
+        <div class="language-option" onclick="setLanguage('ur')">
+          <!-- Urdu -->
+          <span class="language-option-icon">ار</span>
+          <p class="language-option-text">اردو</p>
+        </div>
+        <div class="language-option" onclick="setLanguage('gu')">
+          <!-- Gujarati -->
+          <span class="language-option-icon">ગુ</span>
+          <p class="language-option-text">ગુજરાતી</p>
+        </div>
+        <div class="language-option" onclick="setLanguage('kn')">
+          <!-- Kannada -->
+          <span class="language-option-icon">ಕಂ</span>
+          <p class="language-option-text">ಕನ್ನಡ</p>
+        </div>
+        <div class="language-option" onclick="setLanguage('pa')">
+          <!-- Punjabi -->
+          <span class="language-option-icon">ਪੰ</span>
+          <p class="language-option-text">ਪੰਜਾਬੀ</p>
+        </div>
+        <div class="language-option" onclick="setLanguage('mr')">
+          <!-- Marathi -->
+          <span class="language-option-icon">म</span>
+          <p class="language-option-text">मराठी</p>
+        </div>
+      </div>
+      <button onclick="closeLanguageSelector()" class="close-btn">
+        <span class="material-symbols-outlined"> close </span>
+      </button>
+    </div>
+    <main>
+      <section class="hero-section">
+        <h1 id="heroHeading">Find Skilled Labours Near You</h1>
+        <h5 id="heroSubHeading">Connect with verified local workers for all your service needs</h5>
+        <div class="search-bar">
+          <span class="material-symbols-outlined"> search </span>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search for services..."
+            
+          />
+          <button id="search-button" onclick="search()">Search</button>
+        </div>
+      </section>
+      <section class="search-results">
+        <div class="filter-area">
+          <div class="filter-heading">
+            <span class="material-symbols-outlined"> filter_list </span>
+            <h3 id="filterHeading">Filter</h3>
+          </div>
+
+          <div class="filter-item">
+            <h4 id="categoryLabel">Category</h4>
+            <select title="Category Filter" id="category-filter">
+              <option value="">All Categories</option>
+              <option value="plumbing">Plumber</option>
+              <option value="electrical">Electrician</option>
+              <option value="carpentry">Carpenter</option>
+              <option value="cleaning">Cleaner</option>
+              <option value="painting">Painter</option>
+              <option value="mechanic">Mechanic</option>
+              <option value="gardener">Gardener</option>
+              <option value="mason">Mason</option>
+            </select>
+          </div>
+          <div class="filter-item">
+            <h4 id="skillLevelLabel">Skill level</h4>
+            <select title="Skill Level Filter" id="skill-level-filter">
+              <option value="0">All skill</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <!-- <div class="filter-item">
+            <h4>Rating</h4>
+            <div class="star-rating">
+              <span
+                class="material-symbols-outlined"
+                onclick="showStarRating(this)"
+              >
+                star_rate
+              </span>
+              <span
+                class="material-symbols-outlined"
+                onclick="showStarRating(this)"
+              >
+                star_rate
+              </span>
+              <span
+                class="material-symbols-outlined"
+                onclick="showStarRating(this)"
+              >
+                star_rate
+              </span>
+              <span
+                class="material-symbols-outlined"
+                onclick="showStarRating(this)"
+              >
+                star_rate
+              </span>
+              <span
+                class="material-symbols-outlined"
+                onclick="showStarRating(this)"
+              >
+                star_rate
+              </span>
+            </div>
+          </div> -->
+
+          <div class="filter-item">
+            <h4 id="distanceLabel">Distance</h4>
+            <input
+              title="Distance Filter"
+              type="range"
+              name="distance-filter"
+              id="distance-filter"
+              min="1"
+              max="10"
+              step="1"
+              value="5"
+              oninput="document.getElementById('distance-value').innerText = `${this.value} km`"
+            />
+            <span id="distance-value">10 km</span>
+          </div>
+          <button id="apply-filters-button" onclick="applyFilters()">
+            Apply Filters
+          </button>
+        </div>
+        <div class="real-search-results">
+          <h3 id="results-heading">Search Results</h3>
+          <p>Showing <span id="no_of_results_shown"></span> of {{total}} results</p>
+          <div id="results-container">
+            <!-- Search results will be dynamically inserted here -->
+            
+          </div>
+        </div>
+      </section>
+    </main>
+    <div class="notification"></div>
+    <script>
+      let data = {{laborers | tojson}};
+      let lang = {{lang | tojson}};
+    </script>
+    <script src="../js/common.js"></script>
+    <script src="../js/index.js"></script>
+  </body>
+</html>
